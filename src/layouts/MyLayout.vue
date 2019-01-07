@@ -22,9 +22,9 @@
           <q-item-side icon="home"/>
           <q-item-main label="Dashboard"/>
         </q-item>
-        <q-item to="frameworks">
+        <q-item to="posts">
           <q-item-side icon="list_alt"/>
-          <q-item-main label="Frameworks" sublabel="Lista de Frameworks"/>
+          <q-item-main label="Posts" sublabel="Lista de posts"/>
         </q-item>
       </q-list>
     </q-layout-drawer>

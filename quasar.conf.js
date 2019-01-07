@@ -19,6 +19,9 @@ module.exports = function (ctx) {
     ],
     supportIE: false,
     build: {
+      env: ctx.devServer
+        ? { API: JSON.stringify('http://viladosilicio.com.br/wp-json/wp') }
+        : { API: JSON.stringify('http://viladosilicio.com.br/wp-json/wp') },
       scopeHoisting: true,
       vueRouterMode: 'history',
       // vueCompiler: true,
@@ -68,7 +71,8 @@ module.exports = function (ctx) {
       ],
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'Loading'
       ]
       // iconSet: ctx.theme.mat ? 'material-icons' : 'ionicons'
       // i18n: 'de' // Quasar language
