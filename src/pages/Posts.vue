@@ -22,32 +22,18 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'Posts',
-  data () {
-    return {
-      posts: []
-    }
-  },
   mounted () {
-    this.getPosts()
+    // this.getPosts()
+    this.setPosts()
+  },
+  computed: {
+    ...mapState('posts', ['posts'])
   },
   methods: {
-    getPosts () {
-      this.$q.loading.show({
-        delay: 400 // ms
-      })
-      this.$axios.get(`${process.env.API}/v2/posts`)
-        .then((res) => {
-          this.posts = res.data
-          this.$q.loading.hide()
-          console.log('POSTS', res.data)
-        })
-        .catch((err) => {
-          console.error(err)
-          this.$q.loading.hide()
-        })
-    }
+    ...mapActions('posts', ['setPosts'])
   }
 }
 </script>
