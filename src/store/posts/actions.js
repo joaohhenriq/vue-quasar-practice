@@ -20,6 +20,26 @@ const setPosts = ({ commit }) => {
   })
 }
 
+const setArtigo = ({ commit }, id) => {
+  Loading.show({
+    delay: 300
+  })
+  return new Promise((resolve, reject) => {
+    Vue.prototype.$axios.get(`${process.env.API}/v2/posts/${id}`)
+      .then((res) => {
+        commit('SET_ARTIGO', res.data)
+        Loading.hide()
+        resolve(res.data)
+      })
+      .catch((err) => {
+        Loading.hide()
+        console.error(err)
+        reject(err)
+      })
+  })
+}
+
 export {
-  setPosts
+  setPosts,
+  setArtigo
 }

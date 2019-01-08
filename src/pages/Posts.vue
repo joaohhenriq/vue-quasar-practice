@@ -13,7 +13,7 @@
           <q-card-separator />
 
           <q-card-actions>
-            <q-btn push color="primary" label="Detalhes" class="full-width" />
+            <q-btn push color="primary" label="Detalhes" class="full-width" @click="detalhar(post.id)" />
           </q-card-actions>
         </q-card>
       </div>
@@ -22,18 +22,23 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState, mapMutations } from 'vuex'
 export default {
   name: 'Posts',
   mounted () {
     // this.getPosts()
+    this.CLEAR_ARTIGO()
     this.setPosts()
   },
   computed: {
     ...mapState('posts', ['posts'])
   },
   methods: {
-    ...mapActions('posts', ['setPosts'])
+    ...mapActions('posts', ['setPosts']),
+    ...mapMutations('posts', ['CLEAR_ARTIGO']),
+    detalhar (id) {
+      this.$router.push(`artigo/${id}`)
+    }
   }
 }
 </script>
