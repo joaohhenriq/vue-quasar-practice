@@ -1,3 +1,3 @@
 # Quasar App
 
-> WIP
+Projeto simples, apenas para entender como funciona o framework Quasar, e também praticando o Vuex.
